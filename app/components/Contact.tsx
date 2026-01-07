@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative w-full px-6 md:px-12 py-32 md:py-44">
+    <section id="contact" className="relative w-full px-6 md:px-12 py-24 md:py-32">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(15,118,110,0.12),transparent_55%)]" />
-      <div className="relative max-w-6xl mx-auto grid gap-12 lg:grid-cols-[1.1fr,0.9fr] items-center">
+      <div className="relative max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1.1fr,0.9fr] items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -19,7 +19,7 @@ export default function Contact() {
           <p className="text-3xl md:text-5xl font-serif leading-tight text-foreground">
             Let&apos;s build something that moves fast and feels human.
           </p>
-          <p className="mt-6 text-lg text-secondary leading-relaxed max-w-xl">
+          <p className="mt-6 text-base md:text-lg text-secondary leading-relaxed max-w-xl">
             I partner with teams who care about detail, performance, and product momentum.
             If that sounds like you, I&apos;d love to hear about the next release.
           </p>
@@ -30,13 +30,13 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="rounded-[32px] border border-border bg-surface/90 p-8 shadow-xl shadow-black/10"
+          className="rounded-[32px] border border-border bg-surface/90 p-7 md:p-8 shadow-xl shadow-black/10"
         >
           <div className="text-xs uppercase tracking-[0.3em] text-secondary">Start a project</div>
-          <div className="mt-6 text-xl md:text-2xl font-serif text-foreground">
+          <div className="mt-6 text-lg md:text-2xl font-serif text-foreground">
             contact@abdulmusa.com
           </div>
-          <p className="mt-4 text-secondary">
+          <p className="mt-3 text-sm md:text-base text-secondary">
             Share a brief, a timeline, or the idea you want to pressure-test.
           </p>
 
@@ -53,7 +53,7 @@ export default function Contact() {
             </svg>
           </motion.a>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 text-xs uppercase tracking-[0.25em] text-secondary">
+          <div className="mt-6 grid grid-cols-2 gap-4 text-xs uppercase tracking-[0.25em] text-secondary">
             <div className="rounded-2xl border border-border bg-background/70 px-4 py-3">
               Remote-ready
             </div>
@@ -64,7 +64,7 @@ export default function Contact() {
         </motion.div>
       </div>
 
-      <div className="relative mt-20 border-t border-border pt-10 text-center text-xs uppercase tracking-[0.3em] text-secondary">
+      <div className="relative mt-16 border-t border-border pt-8 text-center text-[0.65rem] uppercase tracking-[0.35em] text-secondary">
         © 2024 Abdul Musa. All rights reserved.
       </div>
     </section>

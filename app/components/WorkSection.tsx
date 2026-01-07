@@ -24,19 +24,19 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   };
 
   return (
-    <motion.div ref={ref} style={{ opacity, y }} className="px-6 md:px-12 py-16">
+    <motion.div ref={ref} style={{ opacity, y }} className="px-6 md:px-12 py-12 md:py-14">
       <Link href={`/work/${project.id}`} className="group block max-w-6xl mx-auto">
         <motion.div
           whileHover={{ y: -6 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-[32px] border border-border bg-surface/90 p-8 md:p-12"
+          className="relative overflow-hidden rounded-[32px] border border-border bg-surface/90 p-7 md:p-10"
           style={shadowStyle}
         >
           <div className="absolute inset-0" style={gradientStyle} />
 
           <div
-            className={`relative grid items-center gap-10 lg:grid-cols-[1fr,1.1fr] ${
-              isReversed ? 'lg:grid-cols-[1.1fr,1fr]' : ''
+            className={`relative grid items-center gap-8 lg:grid-cols-[1.05fr,0.95fr] ${
+              isReversed ? 'lg:grid-cols-[0.95fr,1.05fr]' : ''
             }`}
           >
             <div className={`${isReversed ? 'lg:order-2' : ''}`}>
@@ -45,23 +45,23 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 <span className="text-secondary/40">&middot;</span>
                 <span>{project.year}</span>
               </div>
-              <h3 className="mt-6 text-4xl md:text-5xl font-serif tracking-tight text-foreground">
+              <h3 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-serif tracking-tight text-foreground">
                 {project.title}
               </h3>
-              <p className="mt-4 text-lg text-secondary leading-relaxed">
+              <p className="mt-4 text-base md:text-lg text-secondary leading-relaxed">
                 {project.description}
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {project.features.map((feature: string) => (
                   <span
                     key={feature}
-                    className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs uppercase tracking-[0.2em] text-secondary"
+                    className="rounded-full border border-border bg-background/60 px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-secondary"
                   >
                     {feature}
                   </span>
                 ))}
               </div>
-              <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+              <div className="mt-7 inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-foreground">
                 View case study
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -70,7 +70,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </div>
 
             <div className={`${isReversed ? 'lg:order-1' : ''}`}>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border border-border bg-background/80">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-[28px] border border-border bg-background/80">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -90,8 +90,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export default function WorkSection() {
   return (
-    <section id="work" className="relative w-full py-24">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 mb-16">
+    <section id="work" className="relative w-full py-20 md:py-28">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

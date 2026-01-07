@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 
 export default function About() {
   return (
-    <section id="about" className="relative w-full bg-surface/70 px-6 md:px-12 py-32 md:py-44">
+    <section id="about" className="relative w-full bg-surface/70 px-6 md:px-12 py-24 md:py-32">
       <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.6),transparent)]" />
-      <div className="relative max-w-6xl mx-auto grid gap-12 lg:grid-cols-[1.15fr,0.85fr]">
+      <div className="relative max-w-6xl mx-auto grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export default function About() {
               'Design systems should scale with content and velocity.',
               'Every interaction should earn its place.',
             ].map((item) => (
-              <div key={item} className="flex items-center gap-3 text-sm text-secondary">
+              <div key={item} className="flex items-center gap-3 text-sm md:text-base text-secondary">
                 <span className="h-2 w-2 rounded-full bg-accent" />
                 {item}
               </div>
@@ -46,7 +46,7 @@ export default function About() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          <div className="rounded-[28px] border border-border bg-surface/90 p-8 shadow-xl shadow-black/5">
+          <div className="rounded-[28px] border border-border bg-surface/90 p-7 md:p-8 shadow-xl shadow-black/5">
             <p className="text-xs uppercase tracking-[0.3em] text-secondary">Capabilities</p>
             <div className="mt-6 space-y-3 text-foreground">
               {[
@@ -72,9 +72,9 @@ export default function About() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-border bg-background/70 px-4 py-5"
+                className="rounded-2xl border border-border bg-background/70 px-4 py-4"
               >
-                <div className="text-2xl font-semibold text-foreground">{stat.value}</div>
+                <div className="text-xl md:text-2xl font-semibold text-foreground">{stat.value}</div>
                 <div className="mt-1 text-[0.7rem] uppercase tracking-[0.3em] text-secondary">
                   {stat.label}
                 </div>

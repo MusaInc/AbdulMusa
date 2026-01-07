@@ -29,8 +29,8 @@ export default function ProjectPageClient({ project }: { project: Project }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(15,118,110,0.12),transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgba(217,119,6,0.12),transparent_55%)]" />
 
-        <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-32">
-          <div className="max-w-6xl w-full">
+        <section className="relative px-6 md:px-12 pt-24 md:pt-28 pb-20">
+          <div className="max-w-5xl w-full mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -48,7 +48,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 text-foreground"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif tracking-tight mb-6 text-foreground"
             >
               {project.title}
             </motion.h1>
@@ -57,7 +57,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl md:text-2xl text-secondary max-w-3xl mb-12 leading-relaxed"
+              className="text-lg md:text-xl text-secondary max-w-3xl mb-10 leading-relaxed"
             >
               {project.description}
             </motion.p>
@@ -66,7 +66,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="w-full aspect-[16/9] rounded-[32px] overflow-hidden shadow-2xl shadow-black/10 border border-border bg-surface/80"
+              className="w-full aspect-[16/10] rounded-[32px] overflow-hidden shadow-2xl shadow-black/10 border border-border bg-surface/80"
             >
               <Image
                 src={project.image}
@@ -79,8 +79,8 @@ export default function ProjectPageClient({ project }: { project: Project }) {
           </div>
         </section>
 
-        <section className="py-28 px-6 md:px-12 bg-surface/80">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-20 md:py-24 px-6 md:px-12 bg-surface/80">
+          <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -99,14 +99,14 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="rounded-[24px] border border-border bg-background/70 p-6"
+                    className="rounded-[24px] border border-border bg-background/70 p-5 md:p-6"
                   >
                     <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center mb-4">
                       <span className="text-xl font-semibold text-foreground">
                         {String(index + 1).padStart(2, '0')}
                       </span>
                     </div>
-                    <p className="text-lg text-foreground leading-relaxed">{feature}</p>
+                    <p className="text-base md:text-lg text-foreground leading-relaxed">{feature}</p>
                   </motion.div>
                 ))}
               </div>
@@ -114,8 +114,8 @@ export default function ProjectPageClient({ project }: { project: Project }) {
           </div>
         </section>
 
-        <section className="py-24 px-6 md:px-12">
-          <div className="max-w-6xl mx-auto text-center">
+        <section className="py-20 md:py-24 px-6 md:px-12">
+          <div className="max-w-5xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
