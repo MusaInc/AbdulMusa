@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --surface: #ffffff;
-  --foreground: #0a0a0a;
-  --secondary: #525252;
-  --accent: #171717;
-  --border: #e5e5e5;
+  --background: #f7f1e8;
+  --surface: #fffdf8;
+  --foreground: #1c1917;
+  --secondary: #5f5b53;
+  --accent: #0f766e;
+  --highlight: #d97706;
+  --border: #e7ded3;
 }
 
 @theme inline {
@@ -15,9 +16,11 @@
   --color-foreground: var(--foreground);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-highlight: var(--highlight);
   --color-border: var(--border);
-  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'SF Mono', 'Cascadia Code', 'Courier New', monospace;
+  --font-sans: var(--font-space);
+  --font-serif: var(--font-display);
+  --font-mono: var(--font-code);
 }
 
 * {
@@ -34,7 +37,10 @@ html {
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(15, 118, 110, 0.12), transparent 60%),
+    radial-gradient(800px 500px at 90% 10%, rgba(217, 119, 6, 0.1), transparent 55%),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   font-size: 16px;
@@ -43,6 +49,6 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(15, 118, 110, 0.2);
   color: var(--foreground);
 }

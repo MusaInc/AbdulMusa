@@ -16,7 +16,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
       >
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-border hover:bg-foreground hover:text-background transition-colors duration-300 shadow-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface/90 border border-border hover:border-foreground hover:bg-foreground hover:text-background transition-colors duration-300 shadow-lg backdrop-blur"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -25,19 +25,22 @@ export default function ProjectPageClient({ project }: { project: Project }) {
         </Link>
       </motion.div>
 
-      <main className="relative w-full min-h-screen bg-background">
-        <section className="min-h-screen flex items-center justify-center px-6 md:px-12 py-32">
-          <div className="max-w-7xl w-full">
+      <main className="relative w-full min-h-screen">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(15,118,110,0.12),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_10%,rgba(217,119,6,0.12),transparent_55%)]" />
+
+        <section className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-32">
+          <div className="max-w-6xl w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-border mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface/90 border border-border mb-8"
             >
               <span className="text-xs tracking-wider uppercase text-secondary font-medium">
                 {project.platform}
               </span>
-              <span className="text-secondary/50">·</span>
+              <span className="text-secondary/50">&middot;</span>
               <span className="text-xs text-secondary">{project.year}</span>
             </motion.div>
 
@@ -45,7 +48,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight mb-8 text-foreground"
+              className="text-5xl md:text-7xl lg:text-8xl font-serif tracking-tight mb-8 text-foreground"
             >
               {project.title}
             </motion.h1>
@@ -54,7 +57,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl md:text-2xl text-secondary max-w-3xl mb-16 leading-relaxed"
+              className="text-xl md:text-2xl text-secondary max-w-3xl mb-12 leading-relaxed"
             >
               {project.description}
             </motion.p>
@@ -63,7 +66,7 @@ export default function ProjectPageClient({ project }: { project: Project }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl shadow-black/10 border border-border"
+              className="w-full aspect-[16/9] rounded-[32px] overflow-hidden shadow-2xl shadow-black/10 border border-border bg-surface/80"
             >
               <Image
                 src={project.image}
@@ -76,19 +79,19 @@ export default function ProjectPageClient({ project }: { project: Project }) {
           </div>
         </section>
 
-        <section className="py-32 px-6 md:px-12 bg-surface">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-28 px-6 md:px-12 bg-surface/80">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-sm tracking-[0.3em] text-secondary uppercase font-medium mb-16">
-                Key Features
+              <h2 className="text-xs tracking-[0.4em] text-secondary uppercase mb-10">
+                Build Notes
               </h2>
 
-              <div className="grid md:grid-cols-3 gap-12">
+              <div className="grid md:grid-cols-3 gap-6">
                 {project.features.map((feature, index) => (
                   <motion.div
                     key={index}
@@ -96,9 +99,9 @@ export default function ProjectPageClient({ project }: { project: Project }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="group"
+                    className="rounded-[24px] border border-border bg-background/70 p-6"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center mb-4 group-hover:bg-foreground/10 transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center mb-4">
                       <span className="text-xl font-semibold text-foreground">
                         {String(index + 1).padStart(2, '0')}
                       </span>
@@ -111,8 +114,8 @@ export default function ProjectPageClient({ project }: { project: Project }) {
           </div>
         </section>
 
-        <section className="py-32 px-6 md:px-12 bg-background">
-          <div className="max-w-7xl mx-auto text-center">
+        <section className="py-24 px-6 md:px-12">
+          <div className="max-w-6xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -4,79 +4,81 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
-import { projects } from '@/lib/projects';
+import { Project, projects } from '@/lib/projects';
 
-function ProjectCard({ project, index }: { project: any; index: number }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start']
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0.3]);
-  const y = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [60, 0, 0, -60]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0.4]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [50, 0, 0, -40]);
+  const isReversed = index % 2 === 1;
+  const gradientStyle = {
+    background: `linear-gradient(135deg, ${project.color}26 0%, transparent 60%)`,
+  };
+  const shadowStyle = {
+    boxShadow: `0 40px 120px -60px ${project.color}`,
+  };
 
   return (
-    <motion.div
-      ref={ref}
-      style={{ opacity, y }}
-      className="min-h-screen flex items-center justify-center px-6 md:px-12 py-20"
-    >
-      <Link
-        href={`/work/${project.id}`}
-        className="group w-full max-w-7xl"
-      >
+    <motion.div ref={ref} style={{ opacity, y }} className="px-6 md:px-12 py-16">
+      <Link href={`/work/${project.id}`} className="group block max-w-6xl mx-auto">
         <motion.div
-          whileHover={{ y: -8 }}
+          whileHover={{ y: -6 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-2xl bg-surface border border-border shadow-xl shadow-black/5"
+          className="relative overflow-hidden rounded-[32px] border border-border bg-surface/90 p-8 md:p-12"
+          style={shadowStyle}
         >
-          <div className="aspect-[16/9] w-full relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1400px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-500" />
+          <div className="absolute inset-0" style={gradientStyle} />
 
-            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between">
-              <div className="flex items-start justify-between">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20"
-                >
-                  <span className="text-xs tracking-wider uppercase text-white font-medium">
-                    {project.platform}
-                  </span>
-                  <span className="text-white/50">·</span>
-                  <span className="text-xs text-white/80">{project.year}</span>
-                </motion.div>
-
-                <motion.div
-                  className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </motion.div>
+          <div
+            className={`relative grid items-center gap-10 lg:grid-cols-[1fr,1.1fr] ${
+              isReversed ? 'lg:grid-cols-[1.1fr,1fr]' : ''
+            }`}
+          >
+            <div className={`${isReversed ? 'lg:order-2' : ''}`}>
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1.5 text-xs uppercase tracking-[0.2em] text-secondary">
+                <span>{project.platform}</span>
+                <span className="text-secondary/40">&middot;</span>
+                <span>{project.year}</span>
               </div>
+              <h3 className="mt-6 text-4xl md:text-5xl font-serif tracking-tight text-foreground">
+                {project.title}
+              </h3>
+              <p className="mt-4 text-lg text-secondary leading-relaxed">
+                {project.description}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.features.map((feature: string) => (
+                  <span
+                    key={feature}
+                    className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs uppercase tracking-[0.2em] text-secondary"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+                View case study
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
 
-              <div>
-                <motion.h3
-                  className="text-4xl md:text-6xl font-semibold tracking-tight mb-3 text-white"
-                  initial={{ opacity: 0.9 }}
-                  whileHover={{ opacity: 1 }}
-                >
-                  {project.title}
-                </motion.h3>
-                <p className="text-base md:text-lg text-white/80 max-w-2xl leading-relaxed">
-                  {project.description}
-                </p>
+            <div className={`${isReversed ? 'lg:order-1' : ''}`}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border border-border bg-background/80">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 900px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-40" />
               </div>
             </div>
           </div>
@@ -88,19 +90,19 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
 
 export default function WorkSection() {
   return (
-    <section className="relative w-full bg-background py-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
+    <section id="work" className="relative w-full py-24">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-sm tracking-[0.3em] text-secondary uppercase font-medium mb-4">
-            Featured Apps
+          <h2 className="text-xs tracking-[0.4em] text-secondary uppercase mb-4">
+            Selected Work
           </h2>
-          <p className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground">
-            Building experiences that matter
+          <p className="text-3xl md:text-5xl font-serif tracking-tight text-foreground">
+            Experiences engineered for clarity, speed, and repeat use.
           </p>
         </motion.div>
       </div>

@@ -5,18 +5,19 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen w-full flex items-center justify-center px-6 bg-background">
+    <main className="relative min-h-screen w-full flex items-center justify-center px-6">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(15,118,110,0.12),transparent_55%)]" />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center"
+        className="relative text-center"
       >
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-8xl md:text-9xl font-semibold tracking-tight mb-6 text-secondary/30"
+          className="text-8xl md:text-9xl font-serif tracking-tight mb-6 text-secondary/30"
         >
           404
         </motion.h1>
@@ -25,7 +26,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl md:text-3xl font-medium mb-12 text-foreground"
+          className="text-2xl md:text-3xl font-serif mb-12 text-foreground"
         >
           Page not found
         </motion.p>
