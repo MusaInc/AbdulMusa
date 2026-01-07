@@ -1,11 +1,13 @@
 export interface Project {
   id: string;
   title: string;
-  platform: 'iOS' | 'Fire TV' | 'Web';
+  platform: 'iOS' | 'Fire TV';
   year: string;
   description: string;
   features: string[];
   color: string;
+  gradient: string;
+  image: string;
 }
 
 export const projects: Project[] = [
@@ -20,7 +22,9 @@ export const projects: Project[] = [
       'Adaptive difficulty',
       'Performance optimization'
     ],
-    color: '#2563eb'
+    color: '#3b82f6',
+    gradient: 'from-blue-500/20 to-blue-600/5',
+    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop'
   },
   {
     id: 'charades',
@@ -33,7 +37,9 @@ export const projects: Project[] = [
       'TV-optimized UI',
       'Voice interaction'
     ],
-    color: '#dc2626'
+    color: '#ef4444',
+    gradient: 'from-red-500/20 to-red-600/5',
+    image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&h=600&fit=crop'
   },
   {
     id: 'would-you-rather',
@@ -46,7 +52,9 @@ export const projects: Project[] = [
       'Social gameplay',
       'Content curation'
     ],
-    color: '#7c3aed'
+    color: '#8b5cf6',
+    gradient: 'from-violet-500/20 to-violet-600/5',
+    image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop'
   },
   {
     id: 'money-up',
@@ -59,32 +67,8 @@ export const projects: Project[] = [
       'Secure storage',
       'Fast performance'
     ],
-    color: '#16a34a'
-  },
-  {
-    id: 'sooqlina',
-    title: 'Sooqlina',
-    platform: 'Web',
-    year: '2024',
-    description: 'Market platform',
-    features: [
-      'Real-time updates',
-      'Search optimization',
-      'Responsive design'
-    ],
-    color: '#ea580c'
-  },
-  {
-    id: 'foundersflow',
-    title: 'FoundersFlow',
-    platform: 'Web',
-    year: '2024',
-    description: 'Startup workflow system',
-    features: [
-      'Task management',
-      'Team collaboration',
-      'Progress tracking'
-    ],
-    color: '#0891b2'
+    color: '#10b981',
+    gradient: 'from-emerald-500/20 to-emerald-600/5',
+    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=600&fit=crop'
   }
 ];
