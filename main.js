@@ -338,6 +338,7 @@
     // Copy email to clipboard
     // =========================================================================
     const contactEmail = document.querySelector('.contact-email[data-copy]');
+    const copyBubble = document.querySelector('.copy-bubble');
     if (contactEmail) {
         let copyTimer;
         contactEmail.addEventListener('click', async (event) => {
@@ -358,11 +359,13 @@
                 textarea.remove();
             }
 
-            contactEmail.classList.add('is-copied');
-            clearTimeout(copyTimer);
-            copyTimer = setTimeout(() => {
-                contactEmail.classList.remove('is-copied');
-            }, 1500);
+            if (copyBubble) {
+                copyBubble.classList.add('is-visible');
+                clearTimeout(copyTimer);
+                copyTimer = setTimeout(() => {
+                    copyBubble.classList.remove('is-visible');
+                }, 1600);
+            }
         });
     }
 

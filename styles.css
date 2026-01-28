@@ -710,7 +710,6 @@ a {
     padding: 1rem 2rem;
     border: 1px solid var(--gray-800);
     border-radius: 100px;
-    position: relative;
     transition: all 0.3s var(--ease);
 }
 
@@ -720,21 +719,28 @@ a {
     color: var(--white);
 }
 
-.copied-hint {
-    margin-left: 0.75rem;
-    font-size: 0.7rem;
+.copy-bubble {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--gray-800);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--gray-200);
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--accent-soft);
     opacity: 0;
-    transform: translateY(2px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(10px) scale(0.98);
+    transition: opacity 0.2s ease, transform 0.25s ease;
     pointer-events: none;
 }
 
-.contact-email.is-copied .copied-hint {
+.copy-bubble.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 @media (max-width: 640px) {
