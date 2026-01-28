@@ -357,4 +357,29 @@
         reveals.forEach(el => el.classList.add('revealed'));
     }
 
+    // =========================================================================
+    // Copy Email to Clipboard
+    // =========================================================================
+    const emailButton = document.querySelector('.contact-email');
+
+    if (emailButton) {
+        emailButton.addEventListener('click', async function() {
+            const email = this.getAttribute('data-email');
+
+            try {
+                await navigator.clipboard.writeText(email);
+
+                // Add copied state
+                this.classList.add('copied');
+
+                // Remove copied state after 2 seconds
+                setTimeout(() => {
+                    this.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy email:', err);
+            }
+        });
+    }
+
 })();

@@ -711,9 +711,44 @@ a {
     border: 1px solid var(--gray-800);
     border-radius: 100px;
     transition: all 0.3s var(--ease);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 .contact-email:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+}
+
+.contact-email .email-text,
+.contact-email .email-copied {
+    transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
+}
+
+.contact-email .email-copied {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateY(100%);
+    opacity: 0;
+    white-space: nowrap;
+    color: var(--white);
+}
+
+.contact-email.copied .email-text {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.contact-email.copied .email-copied {
+    transform: translate(-50%, -50%) translateY(0);
+    opacity: 1;
+}
+
+.contact-email.copied {
     background: var(--accent);
     border-color: var(--accent);
     color: var(--white);
