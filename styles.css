@@ -710,6 +710,9 @@ a {
     padding: 1rem 2rem;
     border: 1px solid var(--gray-800);
     border-radius: 100px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
     transition: all 0.3s var(--ease);
 }
 
@@ -719,9 +722,37 @@ a {
     color: var(--white);
 }
 
+.contact-email:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.contact-copied {
+    position: absolute;
+    top: -0.85rem;
+    right: 1.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+.contact-email.is-copied .contact-copied {
+    opacity: 1;
+    transform: translateY(-6px) scale(1);
+}
+
 @media (max-width: 640px) {
     .contact {
         padding: 5rem 1.5rem;
+    }
+
+    .contact-copied {
+        right: 1rem;
     }
 }
 

@@ -335,6 +335,37 @@
     });
 
     // =========================================================================
+    // Copy email to clipboard
+    // =========================================================================
+    const contactEmail = document.querySelector('.contact-email[data-copy]');
+    if (contactEmail) {
+        let copyTimer;
+        contactEmail.addEventListener('click', async () => {
+            const copyText = contactEmail.getAttribute('data-copy') || contactEmail.textContent.trim();
+
+            try {
+                await navigator.clipboard.writeText(copyText);
+            } catch (err) {
+                const textarea = document.createElement('textarea');
+                textarea.value = copyText;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.top = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                textarea.remove();
+            }
+
+            contactEmail.classList.add('is-copied');
+            clearTimeout(copyTimer);
+            copyTimer = setTimeout(() => {
+                contactEmail.classList.remove('is-copied');
+            }, 1600);
+        });
+    }
+
+    // =========================================================================
     // Reveal on Scroll
     // =========================================================================
     const reveals = document.querySelectorAll('[data-reveal]');
