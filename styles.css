@@ -714,7 +714,6 @@ a {
     background: transparent;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
 }
 
 .contact-email:hover {
@@ -723,35 +722,36 @@ a {
     color: var(--white);
 }
 
-.contact-email .email-text,
-.contact-email .email-copied {
-    transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
-}
-
-.contact-email .email-copied {
+.email-copied-bubble {
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) translateY(100%);
-    opacity: 0;
-    white-space: nowrap;
-    color: var(--white);
-}
-
-.contact-email.copied .email-text {
-    transform: translateY(-100%);
-    opacity: 0;
-}
-
-.contact-email.copied .email-copied {
-    transform: translate(-50%, -50%) translateY(0);
-    opacity: 1;
-}
-
-.contact-email.copied {
+    bottom: calc(100% + 1rem);
+    transform: translateX(-50%) translateY(10px) scale(0.9);
     background: var(--accent);
-    border-color: var(--accent);
     color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s var(--ease);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+}
+
+.email-copied-bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--accent);
+}
+
+.contact-email.copied .email-copied-bubble {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
 }
 
 
