@@ -335,41 +335,6 @@
     });
 
     // =========================================================================
-    // Copy email to clipboard
-    // =========================================================================
-    const contactEmail = document.querySelector('.contact-email[data-copy]');
-    const copyBubble = document.querySelector('.copy-bubble');
-    if (contactEmail) {
-        let copyTimer;
-        contactEmail.addEventListener('click', async (event) => {
-            event.preventDefault();
-            const copyText = contactEmail.getAttribute('data-copy') || contactEmail.textContent.trim();
-
-            try {
-                await navigator.clipboard.writeText(copyText);
-            } catch (err) {
-                const textarea = document.createElement('textarea');
-                textarea.value = copyText;
-                textarea.setAttribute('readonly', '');
-                textarea.style.position = 'fixed';
-                textarea.style.top = '-9999px';
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                textarea.remove();
-            }
-
-            if (copyBubble) {
-                copyBubble.classList.add('is-visible');
-                clearTimeout(copyTimer);
-                copyTimer = setTimeout(() => {
-                    copyBubble.classList.remove('is-visible');
-                }, 1600);
-            }
-        });
-    }
-
-    // =========================================================================
     // Reveal on Scroll
     // =========================================================================
     const reveals = document.querySelectorAll('[data-reveal]');
