@@ -710,6 +710,7 @@ a {
     padding: 1rem 2rem;
     border: 1px solid var(--gray-800);
     border-radius: 100px;
+    position: relative;
     transition: all 0.3s var(--ease);
 }
 
@@ -717,6 +718,23 @@ a {
     background: var(--accent);
     border-color: var(--accent);
     color: var(--white);
+}
+
+.copied-hint {
+    margin-left: 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+.contact-email.is-copied .copied-hint {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media (max-width: 640px) {

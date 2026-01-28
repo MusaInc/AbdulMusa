@@ -339,6 +339,7 @@
     // =========================================================================
     const contactEmail = document.querySelector('.contact-email[data-copy]');
     if (contactEmail) {
+        let copyTimer;
         contactEmail.addEventListener('click', async (event) => {
             event.preventDefault();
             const copyText = contactEmail.getAttribute('data-copy') || contactEmail.textContent.trim();
@@ -356,6 +357,12 @@
                 document.execCommand('copy');
                 textarea.remove();
             }
+
+            contactEmail.classList.add('is-copied');
+            clearTimeout(copyTimer);
+            copyTimer = setTimeout(() => {
+                contactEmail.classList.remove('is-copied');
+            }, 1500);
         });
     }
 
